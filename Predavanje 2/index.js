@@ -293,7 +293,9 @@ ZA upis i ispis u odvojenom modulu koji se poziva preko koristeći destrukturira
 //? i još neku po želji
 //? Takođe, kreirajte datoteku
 //? i pročitajte datoteku
+Domaci poslati na zlatkohajdarevic@gmail.com
 
+ZIP FAJL ili repositorijum na git-u
 */
 
 
