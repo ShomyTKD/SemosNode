@@ -1,0 +1,32 @@
+[
+    {
+      "ime": "Zlatko",
+      "grad": "Beograd",
+      "prosek": 6.0
+    },
+    {
+      "ime": "Dejan",
+      "grad": "Novi Sad",
+      "prosek": 9.9
+    },
+    {
+      "ime": "Milan",
+      "grad": "Nis",
+      "prosek": 9
+    },
+    {
+      "ime": "Zarko",
+      "grad": "Subotica",
+      "prosek": 8.5
+    },
+    {
+      "ime": "Milena",
+      "grad": "Kraljevo",
+      "prosek": 9.3
+    },
+    {
+      "ime": "Milica",
+      "grad": "Zlatibor",
+      "prosek": 10
+    }
+  ]
