@@ -76,6 +76,53 @@ server2.listen(3001, ()=>{
 });
 
 
+/*
+http://localhost:3000/users/123
+http://localhost:3000/products
+*/
+
+
+/*
+Regex (Regularni izraz) ^\/users\/(\d+)$ koristi se za prepoznavanje URL putanja koje prate određeni obrazac. Hajde da ga razložimo deo po deo:
+
+^:
+Ovo označava početak stringa. U kontekstu URL-a, označava početak putanje.
+/users/:
+
+Ovo doslovno odgovara stringu "/users/".
+/ je način da se znak '/' u regularnom izrazu prikaže kao doslovni znak, jer '/' ima posebno značenje u regexima.
+
+(\d+):
+\d odgovara bilo kojoj cifri (od 0 do 9).
++ označava "jedan ili više" prethodnih karaktera. Dakle, \d+ znači "jedan ili više brojeva".
+() grupiše deo izraza koji može biti uhvaćen za kasniju upotrebu (tzv. capturing group). U ovom slučaju, grupa će uhvatiti niz cifara koji sledi posle "/users/".
+
+$:
+Ovo označava kraj stringa. U kontekstu URL-a, označava kraj putanje.
+Kombinovanjem ovih delova, regularni izraz ^\/users\/(\d+)$ odgovara stringu koji:
+
+Počinje sa "/users/".
+Sledi ga jedan ili više brojeva.
+Završava se na kraju stringa.
+
+Primeri odgovarajućih URL-ova:
+/users/123
+/users/4567
+
+Primeri neodgovarajućih URL-ova:
+/user/123 (nedostaje 's')
+/users/abc (sadrži slova umesto brojeva)
+/users/123/extra (sadrži dodatni deo nakon brojeva)
+
+const pattern = /^\/users\/(\d+)$/;
+const url = "/users/123";
+const match = pattern.exec(url);
+
+if (match) {
+    console.log(match[1]); // Ispisuje: 123
+}
+*/
+
 
 
 
@@ -83,3 +130,7 @@ server2.listen(3001, ()=>{
 - Napisati 10 različitih regularnih izraza - potraziti na web-u stranice za Regex
 - Preneti funkcionalnosti iz prethodnog domaćeg zadatka u novi projekat sa novim ruterom
 */
+
+
+//https://regex101.com/
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
