@@ -2,7 +2,7 @@ var name = 'Zlatko';
 
 
 console.log(`Pozdrav, ${name}`);
-console.log('Pozdrav, '+name);
+console.log('Pozdrav, ' + name);
 
 function greet(name) {
     console.log(`Hello, ${name}!`);
@@ -39,9 +39,9 @@ const lista = [
     { ime: 'Alice', godine: 28, grad: 'New York' },
     { ime: 'Bob', godine: 40, grad: 'Los Angeles' },
     { ime: 'John', godine: 60, grad: 'New York' }
-  ];
+];
 
-  const filtriranaLista = lista.filter(osoba => osoba.godine > 28);
+const filtriranaLista = lista.filter(osoba => osoba.godine > 28);
 
 console.log("Filtrirana lista:", filtriranaLista);
 
@@ -64,7 +64,7 @@ const person2 = {
     // Niz koji predstavlja hobije osobe
     hobbies: ['reading', 'hiking', 'cooking'],
     // Metoda koja pozdravlja osobu
-    greet: function() {
+    greet: function () {
         console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
     }
 };
@@ -99,7 +99,7 @@ ES5 (ECMAScript 5) je verzija specifikacije JavaScript jezika koju je objavila E
 Ova verzija predstavlja značajnu prekretnicu u razvoju JavaScripta jer donosi brojne nove karakteristike i unapređenja u odnosu na prethodne verzije
 */
 //person3.greet(); // Output: Hello, my name is John.
-sayHello.call({name:name});
+sayHello.call({ name: name });
 const anotherPerson = {
     name: 'Alice',
     age: 25
@@ -111,3 +111,42 @@ sayHello.call(anotherPerson); // Output: Hello, my name is Alice.
 /* 
 forEach, map, filter, reduce, every, some
 */
+
+// forEach (Calls a function for each element in array)
+let text = '';
+colors.forEach(concat)
+
+function concat(item, index) {
+    text += index + ": " + item + " ";
+}
+
+console.log(text);
+
+// map
+const numbers = [5, 8, 15, 22];
+const newArr = numbers.map(number => number * 2);
+console.log(newArr);
+
+// filter
+const filterResult = numbers.filter(checkEven)
+
+function checkEven(number) {
+    return number % 2 == 0
+}
+
+console.log(filterResult);
+
+// reduce
+const reducedNumbers = numbers.reduce(reduceFunction)
+
+function reduceFunction(total, num) {
+    return total - num;
+}
+console.log(reducedNumbers);
+
+// every (check if EVERY value in array is over 5)
+console.log(numbers.every(number => number > 5))
+
+// some (check if ANY value is over given number)
+
+console.log(numbers.some(number => number > 5))
