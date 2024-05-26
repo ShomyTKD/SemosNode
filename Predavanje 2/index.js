@@ -126,12 +126,14 @@ try {
 
   //####################################################################################
   //Kreiranje lokalnog modula
-  //const kalkulatorImport = require("./kalkulator.js");
+  const kalkulatorImport = require("./kalkulator.js");
   //destrukturiranje
   //const {sabiranje, oduzimanje} = require("./kalkulator.js");
 
+  // Test za domaci
+  console.log(kalkulatorImport.deljenje(10, 0));
+  console.log(kalkulatorImport.racunanje('+', 10, 2))
 
-  //console.log(kalkulatorImport.sabiranje(2,2));
   //console.log(sabiranje(2,2));
 
   //#######################################################################################

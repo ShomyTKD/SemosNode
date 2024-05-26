@@ -1,29 +1,28 @@
 const http = require('http');
 const url = require('url');
 
-const serverRequest = http.createServer((req, res) =>
-{
-    console.log(req.method);
+const serverRequest = http.createServer((req, res) => {
+  console.log(req.method);
 
 
-    //const queryObject = url.parse(req.url, true).query;
-    console.log(queryObject); // Ispisuje GET parametre
-    res.statusCode = 200;
-    res.setHeader('Content-Type','text/plain');
-    res.end(`Check the console for GET parameters, parameters: ${JSON.stringify(queryObject)}`); //Ovde cete imati gresku jer prosledjujemo object a potrebno je proslediti string
-                                                                                 // JSON.stringify(queryObject)
-                                                                                 // Drugi nacin je const [_, op, a, b] = req.url.split("/");                                                                               
-                                                                                /*
-                                                                                Ako vidite [Object: null prototype] { key: 'value' } kada ispisujete queryObject, 
-                                                                                to je zbog načina na koji url.parse funkcija u Node.js kreira objekat. 
-                                                                                Ovaj objekat nema prototip (null prototype), 
-                                                                                što je zapravo sigurnosna funkcija koja sprečava eventualne probleme sa prototipnim lancem.                                                                                                                                                         
-                                                                                */
-                                                                               // nakon 9 linije staviti const normalQueryObject = Object.assign({}, queryObject);
+  //const queryObject = url.parse(req.url, true).query;
+  console.log(queryObject); // Ispisuje GET parametre
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end(`Check the console for GET parameters, parameters: ${JSON.stringify(queryObject)}`); //Ovde cete imati gresku jer prosledjujemo object a potrebno je proslediti string
+  // JSON.stringify(queryObject)
+  // Drugi nacin je const [_, op, a, b] = req.url.split("/");                                                                               
+  /*
+  Ako vidite [Object: null prototype] { key: 'value' } kada ispisujete queryObject, 
+  to je zbog načina na koji url.parse funkcija u Node.js kreira objekat. 
+  Ovaj objekat nema prototip (null prototype), 
+  što je zapravo sigurnosna funkcija koja sprečava eventualne probleme sa prototipnim lancem.                                                                                                                                                         
+  */
+  // nakon 9 linije staviti const normalQueryObject = Object.assign({}, queryObject);
 
-    //res.statusCode = 200;
-    //res.setHeader('Content-Type','text/plain');
-    //res.end('Ovo je odgovor');
+  //res.statusCode = 200;
+  //res.setHeader('Content-Type','text/plain');
+  //res.end('Ovo je odgovor');
 });
 
 serverRequest.listen(3000);
@@ -67,55 +66,58 @@ serverRequest.listen(3000);
 */
 
 //Post metoda
-const serverPostPodaci = http.createServer((req, res)=>{
-    //Ukoliko je klijent poslao POST zahtev
-    if(req.method === 'POST')
-    {
-      let body = '';
-      req.on('data', podaci => {
-        body += podaci.toString();
-      });
+const serverPostPodaci = http.createServer((req, res) => {
+  //Ukoliko je klijent poslao POST zahtev
+  if (req.method === 'POST') {
+    let body = '';
+    req.on('data', podaci => {
+      body += podaci.toString();
+    });
 
-      req.on('end', ()=> {
-        console.log(body);
-        res.statusCode = 200;
-        res.setHeader('Content-Type','text/plain');
-        res.end(`POST pogodjen, podaci:${body}`);
-      });
-    }
-    //Ukoliko je klijent poslao razlicit metod od POST-a
-    else
-    {
-      res.statusCode = 400;
-      res.setHeader('Content-Type','text/plain');
-      res.end('Da bi ste videli odgovor ovog servera potrebno je da koristite POST metodu');
-    }
+    req.on('end', () => {
+      console.log(body);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(`POST pogodjen, podaci:${body}`);
+    });
+  }
+  //Ukoliko je klijent poslao razlicit metod od POST-a
+  else {
+    res.statusCode = 400;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Da bi ste videli odgovor ovog servera potrebno je da koristite POST metodu');
+  }
 });
 
 serverPostPodaci.listen(3001);
 
 //Kreiranje servera sa rutiranjem uz pomoc switch-a
 
-const serverSwitch = http.createServer((req,res)=>{
-  switch(req.url)
-  {
+const serverSwitch = http.createServer((req, res) => {
+  switch (req.url) {
     case '/': //saberi
       res.statusCode = 200;
-      res.setHeader('Content-Type','text/plain');
+      res.setHeader('Content-Type', 'text/plain');
       res.end('Dobro dosli na pocetnu');
       break;
 
     case '/about': //oduzme
       res.statusCode = 200;
-      res.setHeader('Content-Type','text/plain');
+      res.setHeader('Content-Type', 'text/plain');
       res.end('Bavimo se web developmentom');
       break;
 
+    case '/contact': // nova ruta
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Kontaktirajte nas na contact@semosakademije.rs');
+      break;
+
     default:
-        res.statusCode = 404;
-        res.setHeader('Content-Type','text/plain');
-        res.end('Stranica nije pronadjena');
-        break;
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Stranica nije pronadjena');
+      break;
   }
 
 });
