@@ -65,14 +65,43 @@ app.use((req, res, next) => {
     next()
 })
 
-app.listen(3000, () => {
-    console.log('server radi na portu 3000');
-})
-
 /* Domaci
-Prebacivanje prethodnog domaćeg u Express: kalkulator i konverzija Fh u Cs
+
+// localhost:3000/kalkulator/sabiranje?a=10&b=50
+
+Prebacivanje prethodnog domaćeg u Express: kalkulator i konverzija Fh u Cs localhost:3000/csToFn?vrednost=50
 tri rute:
 1) jedna prima operaciju, podatak a i podatak b i u zavisnosti od operacije vraća rezultat
 2) konverzija iz Fh u Cs
 3) konverzija iz Cs u Fh
 */
+
+const kalkulatorImport = require("./kalkulator.js");
+
+app.get('/kalkulator/:operacija', (req, res) => {
+    const operacija = req.params.operacija;
+    const firstNumber = req.query.a;
+    const secondNumber = req.query.b;
+    const result = kalkulatorImport.racunanje(operacija, parseInt(firstNumber), parseInt(secondNumber))
+    res.send(`${result}`);
+});
+
+app.get('/konverzija/:smer', (req, res) => {
+    const smer = req.params.smer;
+    const vrednost = req.query.vrednost;
+    console.log(smer);
+    if (smer == 'f2c') { // iz fahrenheita u celsius
+        const result = (parseInt(vrednost) - 32) * 5 / 9;
+        res.send(`${result}`);
+    } else if (smer == 'c2f') { // iz celsiusa u fahrenheit
+        const result = (parseInt(vrednost) * 9 / 5) + 32
+        res.send(`${result}`);
+    }
+})
+
+
+
+
+app.listen(3000, () => {
+    console.log('server radi na portu 3000');
+})
