@@ -89,7 +89,6 @@ app.get('/kalkulator/:operacija', (req, res) => {
 app.get('/konverzija/:smer', (req, res) => {
     const smer = req.params.smer;
     const vrednost = req.query.vrednost;
-    console.log(smer);
     if (smer == 'f2c') { // iz fahrenheita u celsius
         const result = (parseInt(vrednost) - 32) * 5 / 9;
         res.send(`${result}`);
