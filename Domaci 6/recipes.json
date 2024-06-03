@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Hamburger",
+    "sastojci": "Zemička, meso, salata"
+  },
+  {
+    "name": "Cheeseburger",
+    "sastojci": "Zemička, meso, salata, kačkavalj"
+  }
+]

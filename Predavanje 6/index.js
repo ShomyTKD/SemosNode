@@ -16,4 +16,4 @@ app.listen(PORT, () => {
     console.log(`Server starting on port ${PORT}`);
 })
 
-/* Po istom principu (MVC) izraditi aplikaciju => Izrada aplikacije za čuvanje recepata
+/* Po istom principu (MVC) izraditi aplikaciju => Izrada aplikacije za čuvanje recepata */
