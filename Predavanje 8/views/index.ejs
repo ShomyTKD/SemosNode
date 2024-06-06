@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+        <h1>
+            <%= appName %>
+        </h1>
+        <% if (isThereDuplicate) { %>
+            <p>Duplicated name found: <%=isThereDuplicate%> <br>Please correct your list</p>
+            <% } else if(users.length> 0) { %>
+                <p>There are <%= users.length %> users in our list</p>
+                <table border="1">
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                    <% users.forEach(user=> {%>
+                        <tr>
+                            <td>
+                                <%= user.firstName%>
+                            </td>
+                            <td>
+                                <%= user.lastName%>
+                            </td>
+                            <td>
+                                <%= user.email%>
+                            </td>
+                        </tr>
+                        <% } ) %>
+                </table>
+                <% } else { %>
+                    <p>There are no users in the list</p>
+                    <% } %>
+
+                        <%- include('partials/footer') %>
+</body>
+
+</html>
