@@ -17,9 +17,18 @@
         <% } %>
 
             <form action="/add-user" method="POST">
-                <label for="firstName">Ime</label>
+                <label for="firstName">Ime:</label>
                 <input type="text" name="firstName" id="firstName" required>
+
+                <label for="lastName">Prezime:</label>
+                <input type="text" name="lastName" id="lastName" required>
+
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" required>
+
+                <button type="submit">Dodaj korisnika</button>
             </form>
+            <a href="/">Vrati se na početnu</a>
 </body>
 
 </html>
