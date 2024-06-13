@@ -1,0 +1,1 @@
+Nadogradnja aplikacije za recepte sa validacijom (isto kao i sa imenom i prezimenom na vežbama), dodajte postback i redirect

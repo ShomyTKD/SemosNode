@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj recept</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Dodaj novi recept</h1>
+    <% if (error) { %>
+        <p style="color: red;">
+            <%=error %>
+        </p>
+        <% } %>
+
+            <form action="/add-recipe" method="POST">
+                <label for="recipeName">Naziv:</label>
+                <input type="text" name="recipeName" id="recipeName" required>
+
+                <label for="ingredients">Sastojci:</label>
+                <input type="text" name="ingredients" id="ingredients" required>
+
+                <button type="submit">Dodaj recept</button>
+            </form>
+            <a href="/">Vrati se na početnu</a>
+</body>
+
+</html>
