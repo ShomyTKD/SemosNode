@@ -6,7 +6,7 @@ const db = require('./config/db');
 const authService = require('./middleware/auth');
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 // Middleware za parsiranje JSON podataka
 app.use(bodyParser.json());
